@@ -63,7 +63,7 @@ for e in sxt_list:
 	c = sxt_list.count(e)
 	if c > 1:
 		sxt_list.remove(e)
-print(";".join(sxt_list))#分隔元素
+print(";".join(sxt_list))#分隔元素,str的方法
 '''
 
 '''
