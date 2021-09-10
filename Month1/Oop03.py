@@ -120,6 +120,7 @@ def main():
 if '__main__' == __name__:
 	main()
 '''
+'''
 # 构建学生类
 class Student2(object):
 	# 将类属性私有
@@ -136,13 +137,100 @@ class Student2(object):
 		return cls.__name
 	def get_play(self):
 		return self.__play()
+	def set_work(self,work):
+		if work != 'Python':
+			self.__work = 'Python'
+		else :
+			self.__work = work
+	@classmethod
+	def set_name(cls, name):
+		cls.__name='name'
 	# 将实例方法私有
 	def __play(self):
 		print("偷偷玩王者荣耀")
 def main():
+	
 	s = Student2(1, "Java")
 	print(s.get_work())
 	print(Student2.get_name())
 	s.get_play()
+
+	# 错误代码演示 由于私有的关系，这种操作属于新增
+	s = Student3(1, "Java")
+	s.__name = '李四'
+	print(dir(s))
+	print(Student3.__dict__)
+	print(s.__dict__)
+
+	# 使用内部机制修改，不推荐
+	s = Student2(1, "Java")
+	s._Student2__name = '李四'
+	print(s._Student2__name)
+	
+	# 使用 set_属性名方法修改
+	s = Student2(1, "Java")
+	s.set_work('Python')
+	print(s.get_work())
+	Student2.set_name('王五')
+	print(Student2.get_name())
+if '__main__' == __name__:
+	main()
+
+
+# 构建游戏类
+class Game(object):
+	def __init__(self):#无参
+		self.__name = None
+	def set_name(self, name):
+		print("---setter, %s---"%name)
+		self.__name = name
+	def get_name(self):
+		print("---getter---")
+		return self.__name
+	def del_name(self):
+		print("----deleter---")
+		del self.__name
+	def __del__(self):
+		print("我被释放了！")
+# 接收变量 = property(get_属性名方法, set_属性名方法, del_属性名方法, "docstring")再次封装
+	game = property(get_name, set_name, del_name, "这是一个游戏方法！")
+def main():
+	g = Game()
+	g.game = "王者荣耀"
+	print(g.game)
+	del g.game
+if '__main__' == __name__:
+	main()
+'''
+
+''' 使用@property 装饰器
+1. 在获取属性方法上添加@property
+2. 获取属性、设置属性、删除属性三个方法名一致
+3. 设置属性方法上和删除属性方法上使用一致的@方法名.xxx -> @name.setter，
+@name.deleter
+'''
+# 构建游戏类
+class Game3(object):
+	def __init__(self):
+		self.__name = None
+	@property
+	def name(self):
+		print("---getter---")
+		return self.__name
+	@name.setter
+	def name(self, name):
+		print("---setter, %s---"%name)
+		self.__name = name
+	@name.deleter
+	def name(self):
+		print("---deleter---")
+		del self.__name
+	def __del__(self):
+		print("我被释放了！")
+def main():
+	g = Game3()
+	g.name = "王者荣耀"
+	print(g.name)
+	del g.name
 if '__main__' == __name__:
 	main()
