@@ -164,3 +164,58 @@ print(d1.eat)#self.eat=eat这步操作的原因
 # 	print('My dog is named %s,its color is %s,its age is %d'%(d1.name,d1.color,d1.age))
 # show(d2)
 
+import sys
+
+__author__ = '大名'
+
+
+# 构建人类
+class Person(object):
+	sex = True  # 类属性
+
+	# 初始化对象属性
+	def __init__(self, name, age):
+		self.name = name
+		self.age = age
+
+	__slots__ = ("name", "age",)
+
+
+# 对类无效
+Person.sex = False  # 修改
+print(Person.sex)
+
+# 对对象有效
+p = Person("张三", 18)
+# p.sex = True # 不可以新增
+# p.sex = False # 不可以修改 只读
+print(p.sex)
+
+import sys
+
+__author__ = '大名'
+
+
+# 构建杯子类
+class Cup(object):
+
+	# 初始化对象属性
+	def __init__(self, color, mat):
+		self.color = color
+		self.mat = mat
+
+	def __str__(self):
+		return "{}-->{}".format(self.color, self.mat)
+
+	def __repr__(self):
+		return "{s.color}-->{s.mat}".format(s=self)
+
+
+c = Cup("白色", "玻璃")
+print(c)
+print(Cup("黑色", "塑料"))
+print(c.__str__)
+print(Cup.__repr__)
+print(str(c))
+print(repr(c))
+
