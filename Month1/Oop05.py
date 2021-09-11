@@ -158,8 +158,6 @@ else:
 	没有异常会执行的代码块
 finally:
 	有没有异常都会执行，先于 return 执行
-	
-'''
 
 def testExcept():
 	try:
@@ -178,3 +176,87 @@ def testExcept():
 	finally:
 		print("有没有异常都会执行，先于 return 执行")
 testExcept()
+
+# 异常处理：抛出异常
+# 谁调用谁处理
+def testExcept():
+	print("程序正常执行")
+	raise PermissionError("你懂得...")
+def test():
+	try:
+		testExcept()
+	except Exception as e:
+		print("处理异常的代码块")
+		raise PermissionError("继续出错了...")
+	finally:
+		print("不管有没有异常我都执行")
+test()
+
+# 异常处理：通过健壮性
+# 判断一个人的年龄，如果大于 18 岁提醒戒烟，小于 18 告诉他未成年不允许吸烟
+def testExcept(str_age):
+	# 判断是否是整数
+	flag = (type(1) == type(str_age)) # False 说明是字符串
+	# 判断是否为整数字符串
+	if not flag:
+		flag = (type('a') == type(str_age)) and str_age.isdigit() #isdigit()作用是判断字符串是否为整数
+	# 判断是否成年
+	if flag:
+		age = int(str_age)
+		if age > 18:
+			print("吸烟有害健康，尽早戒烟有益健康")
+		else:
+			print("未成年不允许吸烟")
+	else:
+		print("非法格式")
+testExcept('20aa')
+'''
+
+#模拟用户注册、异常处理、自定义异常
+'''
+	1、用户输入注册信息
+	2、判断是否为纯数字
+	3、判断长度
+	4、注册成功
+'''
+class CustomException(Exception):
+	#初始化信息
+	def __init__(self,*args,**kwargs):
+		super(CustomException, self).__init__(*args,**kwargs)
+
+def username():#注册
+	# 1、用户输入注册信息
+	while True:
+		str_name=input('请输入注册用户名： ')
+		# if len(str_name)==0:
+		# 	raise CustomException('用户名不能为空！')
+		# print(len(str_name))
+		# 3、判断长度,如果表达式成立抛出异常
+		# if 6>len(str_name) or len(str_name)>11:
+		# 	raise CustomException('用户名不合法请输入6—11长度的用户名')
+		# elif str_name.islower()is False:
+		# 	raise CustomException('请输入字母')
+		if 6<len(str_name) and len(str_name)<11 and str_name.islower()is True:
+			return str_name
+		elif len(str_name)==0:
+			raise CustomException('用户名不能为空！')
+		else:
+			raise CustomException('用户名不合法，请输入6—11长度的用户名且为字母')
+def password(str_name):
+	str_pwd = input('请输入用户密码： ')
+	if len(str_pwd)==0:
+		raise CustomException('密码不能为空！')
+	flag=isinstance(str_pwd,str)
+	if flag:
+		if str_pwd[0].isupper() is False or str_pwd[1].islower()is False or str_pwd[2:].isdigit()is False:
+			raise CustomException('密码不合法，必须是1个大写字母+1个小写字母+数字')
+		elif len(str_pwd)<6 or len(str_pwd)>12:
+			raise CustomException('密码不合法，必须是6—12位')
+	# 4、注册成功
+	print('恭喜 %s 注册成功！'%str_name)
+#ctrl+alt+t
+try:
+	u=username()
+	password(u)
+except CustomException as e:
+	print('程序异常，异常为：',e)
