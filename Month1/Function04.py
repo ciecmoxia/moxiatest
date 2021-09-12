@@ -202,6 +202,19 @@ print(msg.decode("unicode_escape"))
 # a. 函数嵌套函数
 # b. 返回内函数
 # c. 内函数引用外部函数环境
+def f(a):#1不会被回收
+	def g(b):#2也不会被回收
+		def k(c):
+			print(a+b+c)
+			return a+b+c
+		return k
+	return g
+
+t1=f(1)
+t2=t1(2)
+t3=t2(3)
+
+
 # 闭包实现：浇花
 def water_flowers(flowers, ml):
 	print("给{}浇水{}ml".format(flowers, ml))
