@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?><!--这是注释，必须写在首行，不要有空格-->
+<people><!--根节点，有且只有一个，也可叫父节点-->
+    <peoson>
+        <name>熊大</name><!--文本节点-->
+        <age>13</age>
+    </peoson>
+
+    <peoson>
+        <name>熊二</name>
+        <age>12</age>
+    </peoson>
+
+    <peoson name="翠花" age="11"></peoson><!--属性节点，解析时有所不同-->
+    <!--<peoson name="翠花" age="11" age="11"></peoson>-->
+</people>
