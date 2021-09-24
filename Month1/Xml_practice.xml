@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?><!--这是注释，必须写在首行，不要有空格-->
+<!DOCTYPE people[
+        <!--自定义实体，必须和根节点一致-->
+        <!ENTITY nm "吉吉国王">
+        <!ENTITY sx "男">
+        ]>
 <people><!--根节点，有且只有一个，也可叫父节点-->
+    <sitcom>
+      <title director="郑晓龙">芈月传</title>
+      <players>
+         <player>孙俪</player>
+         <player>刘涛</player>
+         <player>马苏</player>
+         <player>方中信</player>
+         <player>黄轩</player>
+         <player>高云翔</player>
+      </players>
+      <desc>
+            <![CDATA[战国时期，芈月是楚威王最宠爱的小公主，但<desc>在楚威王死后生活一落千丈，母亲向氏被楚威后逐出宫，
+          芈月和弟弟芈戎躲过了一次次灾难和危机。芈月与楚公子黄歇青梅竹马，真心相爱，但被作为嫡公主芈姝的陪嫁媵侍远嫁秦国。
+          芈姝当上了秦国的王后，芈月不得已成为宠妃...]]>
+        </desc>
+   </sitcom>
+
+    <teacher>
+        <name>&nm;</name>
+        <sex>&sx;</sex>
+    </teacher>
+
     <peoson>
         <name>熊大</name><!--文本节点-->
         <age>13</age>
@@ -8,6 +35,17 @@
     <peoson>
         <name>熊二</name>
         <age>12</age>
+    </peoson>
+
+    <peoson>
+        <name>haha &amp;&lt;&gt;&apos;&quot;</name>
+        <!--
+        &lt;		<
+        &gt;		>
+        &amp;		&
+        &quot;		"
+        &apos;		'
+        -->
     </peoson>
 
     <peoson name="翠花" age="11"></peoson><!--属性节点，解析时有所不同-->
