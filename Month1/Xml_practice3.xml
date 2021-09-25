@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<people id="people">
+	<peoson>
+		<name>熊大</name>
+		<age>12</age>
+	</peoson>
+	<peoson>
+		<name>熊二</name>
+		<age>11</age>
+	</peoson>
+</people>

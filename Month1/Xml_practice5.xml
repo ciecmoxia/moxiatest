@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 第一行是XML声明 -->
+<!-- 这是XML处理指令的例子：处理指令以<?开始,以?>结束 -->
+<!-- 在<?后的第一个单词是处理指令名,在本例中是xml> -->
+<!-- 处理指令一定要顶格写,前面不能有任何空白 -->
+<sitcoms>
+   <sitcom>
+      <title director="郑晓龙">芈月传</title>
+      <players>
+         <player>孙俪</player>
+         <player>刘涛</player>
+         <player>马苏</player>
+         <player>方中信</player>
+         <player>黄轩</player>
+         <player>高云翔</player>
+      </players>
+      <desc>
+            <![CDATA[战国时期，芈月是楚威王最宠爱的小公主，但<desc>在楚威王死后生活一落千丈，母亲向氏被楚威后逐出宫，
+芈月和弟弟芈戎躲过了一次次灾难和危机。芈月与楚公子黄歇青梅竹马，真心相爱，但被作为嫡公主芈姝的陪嫁媵侍远嫁秦国。
+芈姝当上了秦国的王后，芈月不得已成为宠妃...]]>
+        </desc>
+   </sitcom>
+   <sitcom>
+      <title director="郑晓龙">甄嬛传</title>
+      <players>
+         <player>孙俪</player>
+         <player>陈建斌</player>
+         <player>蔡少芬</player>
+         <player>蒋欣</player>
+         <player>李东学</player>
+      </players>
+   </sitcom>
+</sitcoms>
