@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<people>
+    <peoson>
+        <name>熊大</name>
+        <name>熊大</name>
+        <test>haha</test>
+        <age>13</age>
+        <age>13</age>
+        <person id="1234" sex="女" 身高="180"/>
+    </peoson>
+</people>
