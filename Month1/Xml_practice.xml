@@ -37,16 +37,16 @@
         <age>12</age>
     </peoson>
 
-    <peoson>
+    <!--<peoson>
         <name>haha &amp;&lt;&gt;&apos;&quot;</name>
-        <!--
+        <mine>
         &lt;		<
         &gt;		>
         &amp;		&
         &quot;		"
         &apos;		'
-        -->
-    </peoson>
+        </mine>
+    </peoson>-->
 
     <peoson name="翠花" age="11"></peoson><!--属性节点，解析时有所不同-->
     <!--<peoson name="翠花" age="11" age="11"></peoson>-->
